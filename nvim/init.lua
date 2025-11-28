@@ -105,9 +105,11 @@ require('lazy').setup({
   {
     'windwp/nvim-ts-autotag',
     opts = {
-      enable_close = true,
-      enable_rename = true,
-      enable_close_on_slash = true,
+      opts = {
+        enable_close = true,
+        enable_rename = true,
+        enable_close_on_slash = true,
+      },
     },
   },
   {
@@ -120,9 +122,6 @@ require('lazy').setup({
   {
     'f-person/git-blame.nvim',
     event = 'VeryLazy',
-    opts = {
-      enabled = atWork(),
-    },
     config = function()
       local GitBlame = require 'gitblame'
 
@@ -130,7 +129,7 @@ require('lazy').setup({
         GitBlame:toggle()
       end
 
-      vim.keymap.set('n', '<leader>gb', toggleGitBlame)
+      vim.keymap.set('n', '<leader>gb', toggleGitBlame, { desc = 'toggle git blame' })
     end,
   },
   {
